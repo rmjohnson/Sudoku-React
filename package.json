@@ -1,0 +1,26 @@
+{
+  "name": "sudoku-react",
+  "version": "1.0.0",
+  "description": "Pretty react front end for sudoku puzzles.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmjohnson/Sudoku-React.git"
+  },
+  "keywords": [
+    "sudoku",
+    "react"
+  ],
+  "author": "Ryan Johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmjohnson/Sudoku-React/issues"
+  },
+  "homepage": "https://github.com/rmjohnson/Sudoku-React#readme",
+  "dependencies": {
+    "sudoku": "0.0.2"
+  }
+}
