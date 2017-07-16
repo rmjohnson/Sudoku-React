@@ -18,29 +18,27 @@ export default class Grid extends PureComponent {
 	}
 
 	handleSquareChange = (value, index) => {
-		if(!isNaN(value) && value > 0) {
-			const { writingMode } = this.props;
-			const newPuzzle = [...this.state.puzzle];
-			if (writingMode == 'pen') {
-				newPuzzle[index].number = value;
-			} else if (writingMode == 'pencil') {
-				newPuzzle[index].possibleNumbers = [...newPuzzle[index].possibleNumbers];
+		const { writingMode } = this.props;
+		const newPuzzle = [...this.state.puzzle];
+		if (writingMode == 'pen') {
+			newPuzzle[index].number = value;
+		} else if (writingMode == 'pencil') {
+			newPuzzle[index].possibleNumbers = [...newPuzzle[index].possibleNumbers];
 
-				// If the number already exists in the list, let's toggle it off
-				const currentPossibleNumbersIndex = newPuzzle[index].possibleNumbers.indexOf(value);
-				if (currentPossibleNumbersIndex !== -1) {
-					newPuzzle[index].possibleNumbers.splice(currentPossibleNumbersIndex, 1);
-				} else {
-					newPuzzle[index].possibleNumbers.push(value);
-				}
+			// If the number already exists in the list, let's toggle it off
+			const currentPossibleNumbersIndex = newPuzzle[index].possibleNumbers.indexOf(value);
+			if (currentPossibleNumbersIndex !== -1) {
+				newPuzzle[index].possibleNumbers.splice(currentPossibleNumbersIndex, 1);
 			} else {
-				throw new Error(`Unknown writing mode: ${writingMode}`);
+				newPuzzle[index].possibleNumbers.push(value);
 			}
-			
-			this.setState({
-				puzzle: newPuzzle
-			});
+		} else {
+			throw new Error(`Unknown writing mode: ${writingMode}`);
 		}
+		
+		this.setState({
+			puzzle: newPuzzle
+		});
 	}
 	
 	render() {
@@ -51,7 +49,7 @@ export default class Grid extends PureComponent {
 			<Square
 				index={index}
 				given={square.given}
-				handleChange={this.handleSquareChange}
+				handleSquareChange={this.handleSquareChange}
 				number={square.number}
 				possibleNumbers={square.possibleNumbers}
 				key={`square-${index}`}
