@@ -4,7 +4,7 @@ import WritingModeControls from './writing-mode-controls';
 
 export default class App extends PureComponent {
 	state = {
-		currentWritingMode: 'pencil',
+		currentWritingMode: 'pen',
 		puzzle: [
 			null, 	null, 	null, 	9, 		6, 		null, 	8, 		null, 	4,
 			4, 		null, 	8,		5, 		null, 	null, 	null, 	2, 		null,
