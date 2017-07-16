@@ -1,0 +1,112 @@
+body {
+	//background-color: lightgrey;
+}
+
+@app-background-color: #ddd;
+@square-size: 75px;
+@squares-on-grid: 9;
+@grid-size: calc(@square-size * @squares-on-grid);
+
+
+.app {
+	max-width: 60%;
+	min-width: @grid-size;
+	margin: 0 auto;	
+	background-color: @app-background-color;
+	box-shadow: 2px 2px black;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: sans-serif;
+}
+
+.grid {
+	@thin-border: 1px solid black;
+	@thick-border: 3px solid black;
+
+	display: flex;
+	flex-wrap: wrap;
+	margin: 10px;
+	max-width: @grid-size;
+	border: @thick-border;
+
+	&__square {
+		@square-size: 75px;
+		display: flex;
+		padding: 5px;
+		align-items: center;
+		justify-content: center;
+		font-size: @square-size;
+		width: @square-size;
+		height: @square-size;
+		border: @thin-border;
+		box-sizing: border-box;
+		position: relative;
+
+		input {
+			background-color: rgba(0, 0, 0, 0);
+			font-size: @square-size;
+			width: @square-size;
+			height: @square-size - 10px;
+			text-align: center;
+			border: @thin-border;
+			position: absolute;
+			border: 0;
+			z-index: 2;
+
+			&:focus {
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+		}
+
+		&--given {
+			font-weight: bold;
+		}
+
+		&__possible-numbers {
+			z-index: 1;
+			font-size: 16px;
+			display: flex;
+			flex-wrap: wrap;
+			position: absolute;
+			width: @square-size;
+			height: @square-size;
+
+			div {
+				margin: 0px 8px;
+			}
+		}
+	}
+}
+
+.writing-mode-controls {
+	display: flex;
+	justify-content: space-around;
+	width: @grid-size;
+	margin: 10px 0;
+
+	&__pen {
+		width: 100px;
+		height: 100px;
+		background: url('static/pen.svg');
+		background-size: 100px;
+
+		&--active {
+			border-radius: 5px;
+			border: 1px solid black;
+		}
+	}
+
+	&__pencil {
+		width: 100px;
+		height: 100px;
+		background: url('static/pencil.svg');
+		background-size: 100px;
+
+		&--active {
+			border-radius: 5px;
+			border: 1px solid black;
+		}
+	}
+}
